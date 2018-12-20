@@ -14,13 +14,13 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        Latitude: {this.state.latitude}
-        <br />
-        Error: {this.state.errorMessage}
-      </div>
-    );
+    if (this.state.errorMessage && !this.state.latitude) {
+      return <div>Error: {this.state.errorMessage}</div>;
+    }
+    if (this.state.latitude && !this.state.errorMessage) {
+      return <div>Latitude: {this.state.latitude}</div>;
+    }
+    return <div>Loading...</div>;
   }
 }
 
